@@ -32,8 +32,9 @@ function displayTemperature(response){
 
 
 let apiKey ="f4a7c4a51b002t628840b9bo374f490d";
+let city = "Chicago"
 let apiUrl = `
-https://api.shecodes.io/weather/v1/current?query=Chicago&key=f4a7c4a51b002t628840b9bo374f490d&units=metric`;
+https://api.shecodes.io/weather/v1/current?query=${city}&key=f4a7c4a51b002t628840b9bo374f490d&units=metric`;
 
 
 axios.get(apiUrl).then(displayTemperature) 

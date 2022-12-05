@@ -15,7 +15,7 @@ function formatDate(timestamp){
 
 
 function displayTemperature(response){
-   console.log(response);
+  
     let temperatureElement = document.querySelector("#temperature");
     let cityElement = document.querySelector("#city");
     let descriptionElement = document.querySelector("#description");
@@ -36,4 +36,4 @@ let apiUrl = `
 https://api.shecodes.io/weather/v1/current?query=Chicago&key=f4a7c4a51b002t628840b9bo374f490d&units=metric`;
 
 
-axios.get(apiUrl).then(displayTemperature)
+axios.get(apiUrl).then(displayTemperature) 

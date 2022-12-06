@@ -33,11 +33,25 @@ function displayTemperature(response){
    iconElement.setAttribute("alt", response.data.condition.description);
 }
 
-
+function search(city){
 let apiKey ="f4a7c4a51b002t628840b9bo374f490d";
-let city = "Chicago"
 let apiUrl = `
-https://api.shecodes.io/weather/v1/current?query=${city}&key=f4a7c4a51b002t628840b9bo374f490d&units=metric`;
+https://api.shecodes.io/weather/v1/current?query=${city}&key=f4a7c4a51b002t628840b9bo374f490d&units=metric`;  
+axios.get(apiUrl).then(displayTemperature)   
+}
 
 
-axios.get(apiUrl).then(displayTemperature) 
+function handleSubmit(event){
+    event.preventDefault();
+    let cityInputElement = document.querySelector("#city-input");
+    search(cityInputElement.value)
+}
+ 
+
+search("Chicago");
+
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
+
+
+

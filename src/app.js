@@ -34,15 +34,15 @@ let forecastElement = document.querySelector("#forecast");
         forecastHTML + 
         ` 
         <div class="col-2">
-          <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
-          <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.weather.icon}.png" 
+          <div class="weather-forecast-date">${formatDay(forecastDay.time * 1000)}</div>
+          <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${forecastDay.condition.icon}.png" 
           alt=""
           width="42"/>
           <div class="weather-forecast-temperatures">
-          <span class="weather-forecast-temperatures-max"> ${Math.round(forecastDay.temperature.max)}° </
+          <span class="weather-forecast-temperatures-max"> ${Math.round(forecastDay.temperature.maximum)}° </
           span>
             <span class="weather-forecast-temperatures-min">
-             ${Math.round(forecastDay.temperature.min)}°
+             ${Math.round(forecastDay.temperature.minimum)}°
             </span>
           </div>
         </div>
@@ -51,11 +51,11 @@ let forecastElement = document.querySelector("#forecast");
     });
         forecastHTML = forecastHTML + `</div`;   
         forecastElement.innerHTML = forecastHTML
-
+}
         function getForecast(coordinates){
             console.log(coordinates);
             let apiKey = "f4a7c4a51b002t628840b9bo374f490d"
-            let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&key=${apiKey}&units=imperial`
+            let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=imperial`
             axios.get(apiUrl).then(displayForecast);
         }
 
@@ -101,4 +101,4 @@ function handleSubmit(event){
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
-search("Chicago");}
+search("Chicago");
